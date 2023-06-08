@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>News App</h1>
+        
+        <form action="/news" method="POST">
+            <div class="filter-section">
+                <h3 class="left-align">Filter by countries:</h3>
+                <div class="checkboxes left-align">
+                    <label><input type="checkbox" name="countries" value="us"> US</label>
+                    <label><input type="checkbox" name="countries" value="gb"> GB</label>
+                    <label><input type="checkbox" name="countries" value="ca"> CA</label>
+                    <!-- Add more countries as needed -->
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3 class="left-align">Filter by title or content:</h3>
+                <div class="search-bar left-align">
+                    <input type="text" name="search_keyword" placeholder="Enter keyword">
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        
+        {% if filtered_news %}
+            <h2>News Articles</h2>
+            <div class="articles">
+                {% for news_article in filtered_news %}
+                    <div class="article">
+                        <h3>{{ news_article['headline'] }}</h3>
+                        <p>{{ news_article['content'] }}</p>
+                        <p><a href="{{ news_article['url'] }}">Read more</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-articles-found">No news articles found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
