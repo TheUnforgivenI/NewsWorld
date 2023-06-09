@@ -5,6 +5,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='news.css') }}">
 </head>
 <body>
+
+    <section class="header">
+        <nav>
+            <div class="nav-links">
+                <ul>
+                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/">Home</a></li>
+                </ul>
+            </div>
+        </nav>
     <div class="container">
         <h1>News App</h1>
         
@@ -15,7 +25,9 @@
                     <label><input type="checkbox" name="countries" value="us"> US</label>
                     <label><input type="checkbox" name="countries" value="gb"> GB</label>
                     <label><input type="checkbox" name="countries" value="ca"> CA</label>
-                    <!-- Add more countries as needed -->
+                    <label><input type="checkbox" name="countries" value="de"> DE</label>
+                    <label><input type="checkbox" name="countries" value="ru"> RU</label>
+                    <label><input type="checkbox" name="countries" value="bg"> BG</label>
                 </div>
             </div>
             

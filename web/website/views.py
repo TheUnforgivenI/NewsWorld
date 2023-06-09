@@ -4,7 +4,7 @@ import requests
 views = Blueprint('views', __name__)
 
 # NewsAPI configuration
-API_KEY = 'ee9484b6aec54eb082867c878a2444a7'  # Replace with your NewsAPI key
+API_KEY = '7cb2698e15634664be6ea019472f2ef1'  # Replace with your NewsAPI key
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
@@ -27,7 +27,7 @@ def index():
     return render_template('news.html', filtered_news=filtered_news, user=current_user)
 
 
-def get_news(selected_countries=None):
+def get_news(selected_countries='us,gb,ca,de,ru,bg'):
     url = 'https://newsapi.org/v2/top-headlines'
     params = {
         'country': '',
@@ -46,7 +46,7 @@ def get_news(selected_countries=None):
         for article in articles:
             news_article = {
                 'headline': article['title'],
-                'content': article['description'],
+                'content': article['description'] if 'description' in article else '',
                 'url': article['url']
             }
             news.append(news_article)

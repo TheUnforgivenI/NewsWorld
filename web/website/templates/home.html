@@ -30,13 +30,12 @@
             <div class="nav-links">
                 <ul>
                     {% if current_user.is_authenticated %}
-                        <li><a href="">MY PROFILE</a></li>
-                        <li><a href="">TRENDING</a></li>
-                        <li><a href="">ABOUT US</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="/news">News App</a></li>
+                      
                     {% else %}
                         <li><a href="{{ url_for('auth.login') }}">LOGIN</a></li>
-                        <li><a href="">TRENDING</a></li>
-                        <li><a href="">ABOUT US</a></li>
+                        
                     {% endif %}
                 </ul>
             </div>
